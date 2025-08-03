@@ -1,0 +1,25 @@
+{
+  "name": "mern_project",
+  "version": "1.0.0",
+  "description": "a backend project learning series",
+  "keywords": [
+    "node",
+    "express",
+    "youtube"
+  ],
+  "homepage": "https://github.com/Stack-Sage/MERN-Project-#readme",
+  "bugs": {
+    "url": "https://github.com/Stack-Sage/MERN-Project-/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stack-Sage/MERN-Project-.git"
+  },
+  "license": "ISC",
+  "author": "Adarsh",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
