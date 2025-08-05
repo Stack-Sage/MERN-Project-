@@ -161,3 +161,75 @@ pushing the changes to github
     - git add .
     - git commit -m "Custom Api Responses and error handling"
     - git push origin main
+
+
+*** Lecture Four ***
+--- Setting up the User and video Model with Hooks and JWT ---
+
+# creating user and video model 
+    - create a models folder in the src folder
+    - create a user.js file in the models folder
+    - create a video.js file in the models folder
+
+# Writing the user and video model - this i know how do make the model so i will just write the code for both models 
+
+## npm i mongoose-aggregate-paginate-v2  
+    - mongoose-aggregate-paginate-v2 is a plugin for mongoose that adds pagination to aggregate queries
+    - it is used to paginate the video model 
+    - what mongoose-aggregate-paginate-v2 will do is 
+    imagine you have a video model with 1000 videos and you want to get the first 10 videos
+    - you can use the paginate method to get the first 10 videos
+    if we are not using it then we have to load 1000 video at the same time which will eventually crash the server
+    * videoSchema.plugin(mongooseAggregatePaginate) - this will add the paginate method to the video model *
+
+## npm i bcrypt 
+    - bcrypt is a library to hash passwords
+    - it is used to hash the password before saving it to the database
+    - it is used to compare the password when the user logs in
+    - bcrypt is one way hashing algorithm meaning password can be hashed but cannot be decrypted
+
+## npm i jsonwebtoken
+    - jwt is a library to create and verify JSON Web Tokens
+    - it is used to create a token when the user logs in
+    - it is used to verify the token when the user makes a request to a protected route
+    - jwt is used to authenticate the user and authorize access to protected routes
+    
+** How jwt works is 
+    jwt is a bearer token that is sent in the Authorization header of the request
+    1. User logs in with email and password
+    2. Server checks if the user exists and if the password is correct
+    3. If the user exists and the password is correct, server creates a token with user id and email
+    4. Server sends the token to the client
+    5. Client stores the token in local storage or cookies
+    6. Client sends the token in the Authorization header with every request to protected routes
+    JWT token is consists of three parts
+    1. Header - contains the type of token and the signing algorithm
+    2. Payload - contains the user id and email
+    3. Signature - used to verify the token  **
+
+
+# Using pre method of mongoose to hash the password before saving it to the database
+    - pre method is a middleware that is called before the document is saved to the database
+    - it is used to hash the password before saving it to the database
+
+# using compare method of bcrypt to compare the password when the user logs in
+    - compare method is used to compare the password entered by the user with the hashed password in the database
+    - it returns true if the passwords match and false if they don't match
+
+# adding access and refresh token secret and expiry to the .env file
+    - access token is used to authenticate the user and authorize access to protected routes
+    - refresh token is used to refresh the access token when it expires
+    - access token has a short expiry time (1 day) and refresh token has a longer expiry time (10 days)
+    - we will use these tokens in the authentication middleware to protect the routes
+    - in database we weil only store the refresh token and not the access token 
+    - access token will be sent to the client and stored in local storage or cookies
+
+# setting up functions for generating refresh and acces tokens 
+    - create a generateAccessToken function that takes user id , username and email as arguments and returns a signed token
+    - create a generateRefreshToken function that takes user id  as arguments and returns a signed token
+    - these functions will be used in the authentication middleware to protect the routes
+
+# Pushing the changes to github
+    - git add .
+    - git commit -m "Setting up the User and video Model with Hooks and JWT"
+    - git push origin main
