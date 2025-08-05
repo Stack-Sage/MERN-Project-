@@ -233,3 +233,65 @@ pushing the changes to github
     - git add .
     - git commit -m "Setting up the User and video Model with Hooks and JWT"
     - git push origin main
+
+
+*** Lecture Five ***
+--- How to uplaod files with the help of multer and cloudinary ---
+
+# Setting up Cloudinary account
+    - create a cloudinary account
+    - create a cloudinary upload preset
+    - get the cloudinary cloud name, api key and api secret
+    - add these to the .env file
+
+## npm i multer 
+    - multer is a middleware for handling multipart/form-data, which is used for uploading files
+    - it is used to handle file uploads in the application
+    - it is used to parse the incoming request and save the file to the server
+
+## npm i cloudinary 
+    - cloudinary is a cloud-based image and video management service
+    - it is used to upload images and videos to the cloud
+    - it provides a URL for the uploaded file that can be used in the application
+
+
+> note: we will upload users files from multer , to cloudinary -> but in between we will save the file temporarily in our local storage
+    - we will use multer to handle the file upload and save the file to the local storage
+    - we will use cloudinary to upload the file to the cloud and get the URL of the uploaded file
+    - we will delete the file from the local storage after uploading it to the cloud
+
+
+## making cloudinary.js in utils 
+    - importing v2 and fs 
+    - v2 is the cloudinary module that provides methods to upload files to the cloud
+    - fs is the file system module that provides methods to read and write files to the local file system
+
+## writing uploadOnCloudinary function
+    - it takes the file path as an argument and uploads the file to the cloud
+    - it returns the URL of the uploaded file
+    - it uses the cloudinary.v2.uploader.upload method to upload the file to the cloud
+    - it uses fs.unlinkSync to delete the file from the local storage after uploading it to the cloud
+
+
+## we will make a middleware to handle file uploads
+    - create a middleware function that uses multer to handle file uploads
+    - it will save the file to the local storage and call the next middleware function
+    - we will use this middleware in the routes where we want to upload files
+
+
+## Created a multer.middlerware.js file 
+    - it will handle file uploads and call the next middleware function
+    - it will use multer to handle file uploads and save the file to the local storage
+    - it will call the next middleware function after saving the file to the local storage
+    - upload.single('file') is used to handle single file uploads
+
+
+> note : Till now all we have done in this project is setting up the project like a industry level standard
+    - we have set up the project structure, database connection, error handling, custom API responses, user and video models, JWT authentication, and file uploads
+    - now we will move on to creating the routes and controllers for the application
+
+
+# Pushing the changes to github
+    - git add .
+    - git commit -m "Created a multer middleware for handling file uploads"
+    - git push origin main
