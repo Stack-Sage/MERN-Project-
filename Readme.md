@@ -295,3 +295,16 @@ pushing the changes to github
     - git add .
     - git commit -m "Created a multer middleware for handling file uploads"
     - git push origin main
+
+
+*** Lecture Six ***
+    -HTTP Headers, CORS, Security, and HTTP Methods 
+
+# created an http.md file
+    - this file will contain information about HTTP headers, CORS, security, and HTTP methods
+
+## pushing the changes to github
+    - git add .
+    - git commit -m "Created an http.md file for HTTP headers, CORS, security, and HTTP methods"
+    - git push origin main
+    
