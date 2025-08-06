@@ -338,4 +338,32 @@ pushing the changes to github
     - git commit -m "Setting up user routes and controllers"
     - git push origin main
 
-    
+
+*** Lecture eight ***
+--- Logic building of register Controller ---
+
+## Writing RegisterUser function 
+1. get user details from frontend (via - Postman)
+    - successfully handled the data 
+        
+            - Handling image files : via adding multer as a middleWare in user.routes.js 
+
+2. validation (if something is not empty - wrong format)
+3. check if user already exists: username, email
+4. checking if image files 
+5. if image is availble than we uplaod to cloudinary
+6. create user object - create entry in db 
+7. remove password and refresh token field from response 
+8. check for user creation 
+9. return response 
+
+## also added multer {uplaod} as a  middlware in user.routes 
+         = upload.fields([])
+
+# npm i validator 
+        - to check if the email is of correct format 
+
+# Pushing the changes to github
+    - git add .
+    - git commit -m "Writing RegisterUser Controller function"
+    - git push origin main
