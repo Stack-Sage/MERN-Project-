@@ -308,3 +308,34 @@ pushing the changes to github
     - git commit -m "Created an http.md file for HTTP headers, CORS, security, and HTTP methods"
     - git push origin main
     
+
+*** Lecture Seven ***
+--- Setting up router and controllers ---
+
+## created an user.controller.js file
+    - this file will contain the controller functions for the user routes
+    - we will create a registerUser function that will handle the user registration
+    - we will use the asyncHandler middleware to handle errors in the controller functions
+
+## created a user.routes.js file
+    - this file will contain the user routes
+    - we will use the express.Router() method to create a new router instance
+    - we will use the router.post() method to create a POST route for user registration
+    - we will use the registerUser controller function to handle the user registration
+
+## added routes in app.js file
+    - we will import the user routes in the app.js file
+    - we will use the app.use() method to use the user routes in the application
+    - we will use the /api/v1/users prefix for the user routes
+
+## tested with postman
+    - we will use postman to test the user registration route
+    - we will send a POST request to the /api/v1/users/register route with the user details in the request body
+    - we will check if the response is successful and if the user is registered successfully
+
+# Pushing the changes to github
+    - git add .
+    - git commit -m "Setting up user routes and controllers"
+    - git push origin main
+
+    
