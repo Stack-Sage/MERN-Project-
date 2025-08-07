@@ -1,5 +1,5 @@
 import mongoose, { model } from "mongoose";
-import { Video } from "./video.model";
+import { Video } from "./video.model.js";
 import { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
@@ -14,7 +14,7 @@ const userSchema = new Schema(
       trim: true,
       index: true,
     },
-
+ 
     email: {
       type: String,
       required: true,
