@@ -482,3 +482,18 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git add .
     - git commit -m "Access,Refresh Token , logout and login "
     - git push origin main
+
+
+*** Lecture 11 ***
+--- Testing the login and logout using postman & debugging---
+
+## created a function refreshAccessToken in user.controller
+    - which will bassically update refresh token if it is expired 
+
+## added a userRoute => refresh-token in user.routes.js
+
+
+## pushing the changes to github 
+    -git add .
+    -git commit -m " endpoint for refreshing access token "
+    -git push origin main
