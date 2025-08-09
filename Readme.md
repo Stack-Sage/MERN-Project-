@@ -363,8 +363,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
 ## Writing RegisterUser function
 
 1.  get user details from frontend (via - Postman)
-    - successfully handled the data
-            - Handling image files : via adding multer as a middleWare in user.routes.js
+    - successfully handled the data - Handling image files : via adding multer as a middleWare in user.routes.js
 
 2.  validation (if something is not empty - wrong format)
 3.  check if user already exists: username, email
@@ -423,7 +422,6 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
             "success": true
             }
 
-
 # Pushing the changes to github
 
     - git add .
@@ -431,3 +429,56 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git push origin main
 
 **_ Lecture ten _**
+--- Access and Refresh Token , Middleware and cookies ---
+
+## Access Token
+
+    Short-lived (e.g., 15 min – 1 hour).
+    Used to access protected resources/features.
+    Sent with each request for authentication.
+
+## Refresh Token
+
+    Long-lived (days, weeks, months).
+    Stored securely (often HTTP-only cookie).
+    Used to get a new access token when the old one expires.
+    Sent to the server only during token refresh.
+
+    Why This Setup Exists
+    Short access token lifespan → limits damage if stolen.
+    Refresh token → avoids making the user log in repeatedly.
+
+    Flow: Login → get both tokens → use access token normally → when expired, send refresh token → server verifies → issues new access token.
+
+
+## creating the userLogin function in user.controller.js
+        - req body -> get data 
+        - email based 
+        - find the user if he is in data base or not 
+        - if user exist ? check the password 
+        - if password correct ? generate access and refresh token ( in seperate function )
+        - and send them to user via cookie (secure cookie)
+
+## created a logutUser route in user.route.js
+
+## also creating auth.middleware.js
+    - which will have to verify if the user is login or not 
+    - adding user to req.user
+
+## injecting this verifyJWT as a middleware in logout Route 
+
+## Also created a  logout function in user.controller.js
+    - how do i logout ?
+    - well remove cookies 
+    - also remove access and refresh tokens 
+    - the thing is how do i find the user during logout 
+    - simple solution middleware , req and res are just object 
+    so we can design our own middleware 
+
+
+
+# Pushing the changes to github
+
+    - git add .
+    - git commit -m "Access,Refresh Token , logout and login "
+    - git push origin main
