@@ -497,3 +497,26 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     -git add .
     -git commit -m " endpoint for refreshing access token "
     -git push origin main
+
+*** Lecture 12 ***
+--- Creating subscription Model and writing update controller ---
+
+## creating Subscription Model 
+
+# Writing some Update functions in user.controller.js
+
+## writing update password function in user.controller
+
+## writing getCurrentUser
+
+## writing updateAccountDetails
+
+## writing updateUserAvatar function
+
+## writing updateUserCoverImage function
+
+
+## pushing the changes to github 
+    -git add .
+    -git commit -m " writing subscription model and update controllers "
+    -git push origin main
