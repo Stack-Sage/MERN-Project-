@@ -520,3 +520,50 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     -git add .
     -git commit -m " writing subscription model and update controllers "
     -git push origin main
+
+*** Lecture 13 ***
+--- understanding the subscription model ---
+
+## Subscription Schema 
+    - Two major things 
+    1. Subscribers 
+    2. Channels 
+
+    User -> a, b, c, d, e
+    channel -> ACA, BAB CAC
+
+    everytime we subscribe to a new channel a new document will be formed 
+
+    [
+        channel -> ACA
+        Subscriber-> A
+    ]
+    [
+        channel -> ACA
+        Subscriber-> B
+    ]
+        [
+            channel -> ACA
+            Subscriber-> C
+        ]
+            [
+                channel -> BAB
+                Subscriber-> C
+            ]
+                [
+                    chanel -> CAC
+                    Subcriber-> C
+                ]
+
+    - major question or challenge is to how will we find the subscribers of a particular channel 
+         we will select all those documents whoes channel = particular channel 
+         like in this for ACA channel we got 3 Subscribers
+
+    - another challenge to find how many channels a user has subscribed 
+        we will select subscriber = particular user
+        in this subscriber = C so 3 channels
+
+## pushing the changes to github 
+    -git add .
+    -git commit -m " understanding Subscription model "
+    -git push origin main

@@ -5,6 +5,8 @@ import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
+
+
 const generateAccessRefreshToken = async (userId) => {
   try {
     const user = await User.findById(userId);
@@ -278,12 +280,13 @@ const updateAccountDetails = asyncHandler(async (req,res)=>{
 
 const updateUserAvatar = asyncHandler(async(req,res)=>{
 
-  const avatarLocal = req.files?.path
+  const avatarLocal = req.file?.path
 
   if(!avatarLocal){
     throw new ApiError(400,"Avatar file is missing")
   }
 
+  // Todo Delete Old Image 
   const avatar = await uploadOnCloudinary(avatarLocal)
 
   if(!avatar.url){
