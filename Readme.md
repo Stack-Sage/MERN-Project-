@@ -567,3 +567,21 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     -git add .
     -git commit -m " understanding Subscription model "
     -git push origin main
+
+
+*** Lecture 14 ***
+
+--- mongoDb Aggregation piplelines ---
+
+> note : An aggregation pipleline consists of one or more stages that process documents
+    - each stage performs an operation on the input docuements , like group documents 
+    - the docuements that are output from a stage are passed to the next stage 
+    - an aggregation pipeline can return results for groups of docuements , like retrieving average, maximum and minimum values 
+
+
+## writing a function getUserChannelProfile for counting the subscriber count and no of channel user subscribed to , using aggregation piplelines -> a bit advanced for me ngl
+
+## pushing changes to github
+    -git add .
+    -git commit -m "mongoDB Aggregation piplelines"
+    -git push origin main
