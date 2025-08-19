@@ -610,6 +610,20 @@ $$ Doing the Final testing --- of all User routes using postman (collection)
     6. currentUser => success
     7. updateAvatar => success
     8. updateCoverImage => success  
+    9. c/:uername => yet to test
+    10. watch-history => yet to test 
+
+
+--- creating remaining model --- 
+
+# created new models such as 
+        - comment.model.js
+        - like.model.js
+        - playlist.model.js
+        - tweet.model.js
+
+## now rest is to make controllers and routers for these models 
+
 
 
 
@@ -623,3 +637,10 @@ Up to this point, I have:
 - added a subscription model and used aggregation pipelines,
 - tested the major user routes with Postman.
 
+
+
+note> i have writen the template of all routers and controllers , 
+all now i have to do is write those controller functions and test it parallely too
+
+
+# pushing changes to github 
