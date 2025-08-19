@@ -585,3 +585,18 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     -git add .
     -git commit -m "mongoDB Aggregation piplelines"
     -git push origin main
+
+
+*** lecture *** 
+---Writing sub pipelines and routes---
+ 
+
+## writing new piplelines for watchHistory
+    - writing getWatchHistory function in user.controller 
+    - also using nested pipelines cause in video model we dont' have the _id which we will get from the owner and owner refers to users so using a nested pipeline to get _id from users 
+
+
+## Pushing changes to github 
+    - git add .
+    - git commit -m "getWatchHistory"
+    - git push origin main
