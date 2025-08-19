@@ -41,22 +41,22 @@ userRouter.route("/change-password").post(verifyJWT, changeCurrentPassword);
 
 userRouter.route("/current-user").get(verifyJWT, getCurrentUser);
 
-user.Router.route("/update-account").patch(verifyJWT, updateAccountDetails);
+userRouter.route("/update-account").patch(verifyJWT, updateAccountDetails);
 
-user.Router.route("/update-avatar").patch(
+userRouter.route("/update-avatar").patch(
   verifyJWT,
   upload.single("avatar"),
   updateUserAvatar
 );
 
-user.Router.route("/update-coverImage").patch(
+userRouter.route("/update-coverImage").patch(
   verifyJWT,
   upload.single("coverImage"),
   updateUserCoverImage
 );
 
-user.Router.route("/c/:username").get(verifyJWT, getUserChannelProfile);
+userRouter.route("/c/:username").get(verifyJWT, getUserChannelProfile);
 
-user.Router.route("/watch-history").get(verifyJWT, getWatchHistory);
+userRouter.route("/watch-history").get(verifyJWT, getWatchHistory);
 
 export { userRouter };

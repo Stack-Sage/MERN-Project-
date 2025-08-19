@@ -4,7 +4,6 @@
     - I'm also keeping the record of every step I take in this project in readme file
     - this project is learning project but at the same time production ready
 
-**_ Lecture One _**
 --- setting up the project ---
 
 First we have Model link
@@ -103,7 +102,7 @@ First we have Model link
     - git commit -m "setting up the database"
     - git push origin main
 
-**_ Lecture Three _**
+
 --- Custom Api Responses and error handling ---
 
 # setting up express app in app.js file
@@ -175,7 +174,7 @@ First we have Model link
 
 pushing the changes to github - git add . - git commit -m "Custom Api Responses and error handling" - git push origin main
 
-**_ Lecture Four _**
+
 --- Setting up the User and video Model with Hooks and JWT ---
 
 # creating user and video model
@@ -245,7 +244,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git commit -m "Setting up the User and video Model with Hooks and JWT"
     - git push origin main
 
-**_ Lecture Five _**
+
 --- How to uplaod files with the help of multer and cloudinary ---
 
 # Setting up Cloudinary account
@@ -310,7 +309,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git commit -m "Created a multer middleware for handling file uploads"
     - git push origin main
 
-**_ Lecture Six _**
+
 -HTTP Headers, CORS, Security, and HTTP Methods
 
 # created an http.md file
@@ -323,7 +322,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git commit -m "Created an http.md file for HTTP headers, CORS, security, and HTTP methods"
     - git push origin main
 
-**_ Lecture Seven _**
+
 --- Setting up router and controllers ---
 
 ## created an user.controller.js file
@@ -357,7 +356,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git commit -m "Setting up user routes and controllers"
     - git push origin main
 
-**_ Lecture eight _**
+
 --- Logic building of register Controller ---
 
 ## Writing RegisterUser function
@@ -388,7 +387,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git commit -m "Writing RegisterUser Controller function"
     - git push origin main
 
-**_ Lecture nine _**
+
 --- Testing the user model with Postman ---
 
 ## Tested with Postman
@@ -428,7 +427,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git commit -m "Debugging and testing with Postman "
     - git push origin main
 
-**_ Lecture ten _**
+
 --- Access and Refresh Token , Middleware and cookies ---
 
 ## Access Token
@@ -484,7 +483,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git push origin main
 
 
-*** Lecture 11 ***
+
 --- Testing the login and logout using postman & debugging---
 
 ## created a function refreshAccessToken in user.controller
@@ -498,7 +497,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     -git commit -m " endpoint for refreshing access token "
     -git push origin main
 
-*** Lecture 12 ***
+
 --- Creating subscription Model and writing update controller ---
 
 ## creating Subscription Model 
@@ -521,8 +520,8 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     -git commit -m " writing subscription model and update controllers "
     -git push origin main
 
-*** Lecture 13 ***
---- understanding the subscription model ---
+
+--- writing the subscription model ---
 
 ## Subscription Schema 
     - Two major things 
@@ -569,7 +568,7 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     -git push origin main
 
 
-*** Lecture 14 ***
+
 
 --- mongoDb Aggregation piplelines ---
 
@@ -587,7 +586,6 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     -git push origin main
 
 
-*** lecture *** 
 ---Writing sub pipelines and routes---
  
 
@@ -600,3 +598,28 @@ JWT token is consists of three parts 1. Header - contains the type of token and 
     - git add .
     - git commit -m "getWatchHistory"
     - git push origin main
+
+
+$$ Doing the Final testing --- of all User routes using postman (collection)
+
+    1. register => success 
+    2. login => success
+    3. logout => success
+    4. refreshtoken => success
+    5. change-password => success
+    6. currentUser => success
+    7. updateAvatar => success
+    8. updateCoverImage => success  
+
+
+
+note > Wrap-up
+Up to this point, I have:
+- laid down a clean project structure,
+- connected MongoDB Atlas with robust error handling,
+- built JWT auth with access/refresh tokens and secure cookies,
+- implemented file uploads via Multer + Cloudinary,
+- built a whole user.controller file to handle almost every function, 
+- added a subscription model and used aggregation pipelines,
+- tested the major user routes with Postman.
+

@@ -6,7 +6,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
-import {ObjectId} from mongodb;
+import {ObjectId} from "mongodb";
 
 const generateAccessRefreshToken = async (userId) => {
   try {
@@ -218,7 +218,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 });
 
 const changeCurrentPassword = asyncHandler(async (req, res) => {
-  // change the current password
+ 
   const { oldPassword, newPassword } = req.body;
   if (!oldPassword || !newPassword) {
     throw new ApiError(400, "Empty Fields");
@@ -242,7 +242,8 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "Password changed successfully"));
 });
 
-const getCurrentUser = asyncHandler(async (req, res) => {
+const getCurrentUser = asyncHandler(async (req, res) =>
+  {
   return res
     .status(200)
     .json(200, req.user, "current user Fetched successfully");
@@ -297,7 +298,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 });
 
 const updateUserCoverImage = asyncHandler(async (req, res) => {
-  const coverImageLocal = req.files?.path;
+  const coverImageLocal = req.file?.path;
 
   if (!coverImageLocal) {
     throw new ApiError(400, "cover image file is missing");
@@ -305,7 +306,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 
   const coverImage = await uploadOnCloudinary(coverImageLocal);
 
-  if (!avatar.url) {
+  if (!coverImage.url) {
     throw new ApiError(500, "Error while uploading cover image");
   }
 
