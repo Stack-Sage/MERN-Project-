@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Schema } from "mongoose";
+import {model, Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const videoSchema = new Schema(
@@ -26,7 +26,7 @@ const videoSchema = new Schema(
       required: true,
     },
     duration: {
-      type: Number, // will get from cloudinary
+      type: Number,
       required:true
     },
     views: {

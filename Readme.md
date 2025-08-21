@@ -644,3 +644,13 @@ all now i have to do is write those controller functions and test it parallely t
 
 
 # pushing changes to github 
+
+
+--- writing video controller --- 
+
+## created publish video function to upload to video , title , desc, thumbnail
+    - just tested it and encoutered some cloudinary error possibly due to my internet 
+    - but eventually success 
+
+## creating a seperate helper function just to get the video data from id so i can use it in different functions and avoid rewriting it again and again 
+

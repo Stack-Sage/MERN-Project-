@@ -18,7 +18,7 @@ videoRouter
          maxcount:1,
       },
       {
-         name:"thumbail",
+         name:"thumbnail",
          maxcount:1,
       }
    ]),
