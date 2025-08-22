@@ -94,6 +94,12 @@ const getVideoById = asyncHandler(async (req, res) => {
   const { videoId } = req.params;
   const video = await helperFindVideoId(videoId);
 
+  if(!video.viewedBy.includes(req.user._id)){
+    video.views  += 1
+    video.viewedBy.push(req.user._id)
+    await video.save()
+  }
+
   return res
     .status(200)
     .json(new ApiResponse(200, video, "Video is Successfully Fetched!"));

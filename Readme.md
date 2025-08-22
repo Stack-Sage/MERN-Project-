@@ -684,3 +684,20 @@ all now i have to do is write those controller functions and test it parallely t
     - tested them all after minor bugs like typos and all they all worked 
 
 
+# pushing changes to github
+    - git add .
+    - git commit -m "comment.controller.js"
+    - git push origin main
+
+
+> note forgot to add the logic for handling views , but can't update view count everytime if a same user visits a video , it should be counted only once per user ,
+so adding a new viewedBy field in video model to keep track of users who have viewed the video
+
+# updating view logic in getVideoById in video.controller.js
+
+## success fully added view logic and tested it too 
+
+# pushing changes to github
+    - git add .
+    - git commit -m " view logic "
+    - git push origin main
