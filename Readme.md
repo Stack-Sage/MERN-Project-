@@ -701,3 +701,14 @@ so adding a new viewedBy field in video model to keep track of users who have vi
     - git add .
     - git commit -m " view logic "
     - git push origin main
+
+
+--- writing tweet controller now --- 
+        - writing tweet.controller.js
+        - created createTweet function to create a new tweet
+        - created getAllTweets function to get all tweets
+        - created updateTweet function to update a tweet
+        - created deleteTweet function to delete a tweet
+        - tested them all after minor bugs like typos and all they all worked
+
+# pushing changes to github
