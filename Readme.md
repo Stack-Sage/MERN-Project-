@@ -728,5 +728,27 @@ so adding a new viewedBy field in video model to keep track of users who have vi
 
 # pushing changes to github
         - git add .
-        - git commit -m "playlist.controller.js"
+        - git commit -m "writing playlist.controller.js"
+        - git push origin main
+
+# making like controller 
+        - created like.controller.js
+        - created toggleLike function to like or unlike a video
+        - created getLikesByVideo function to get all likes for a video
+        - created getLikesByUser function to get all likes by a user
+        - tested them all after minor bugs like typos and all they all worked
+
+# big change of plan changing tweet to hotTakes 
+        - adding ratings like mid , fact , cap to determine how a user feels about the hotTake 
+
+# writing hotTake.controller.js
+        - writing cap-take function to rate a hot take
+        - writing mid-take function to rate a hot take
+        - writing fact-take function to rate a hot take
+
+# after testing all of them they worked with some minor bugs to fix
+
+# pushing changes to github
+        - git add .
+        - git commit -m "writing like.controller.js and hotTake.controller.js"
         - git push origin main

@@ -119,7 +119,7 @@ const deletePlayList = asyncHandler(async (req, res) => {
 const updatePlaylist = asyncHandler(async (req, res) => {
   const { playlistId } = req.params;
   const { newName, newDescription } = req.body;
-   if(!newName && !newDescription ){
+   if(!(newName && newDescription) ){
       throw new ApiError("No update was made!")
    }
 
