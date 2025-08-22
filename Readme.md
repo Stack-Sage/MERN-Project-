@@ -37,7 +37,7 @@ First we have Model link
     - create a .prettierrc file in the root of your project
     - create a .prettierignore file in the root of your project
 
-**_ Lecture Two _**
+
 --- setting up the dataBase ---
 
 # MongoDB Atlas
@@ -653,4 +653,34 @@ all now i have to do is write those controller functions and test it parallely t
     - but eventually success 
 
 ## creating a seperate helper function just to get the video data from id so i can use it in different functions and avoid rewriting it again and again 
+
+
+## created delete video function , update video details
+    - delete video function will delete the video from cloudinary and also from the database
+    - update video details function will update the video details in the database and also in cloudinary
+
+## toggle video pushlish 
+
+## writing get all video function
+         - all query params should be optional
+         - want to search video by title and description too 
+         - small problem user query won't match the cases of title 
+         - either to lowercase everything 
+
+         - or i can use regex to match pattern and find the videos by title or description
+         - options : i for case insensitive
+         
+
+## testing this function - Success 
+
+--- writing comment controller --- 
+
+## writing comment.controller.js
+    - created getAllComments function to get all comments for a video
+    - created addComment function to add a new comment to a video
+    - created deleteComment function to delete a comment
+    - created updateComment function to update a comment
+
+    - tested them all after minor bugs like typos and all they all worked 
+
 

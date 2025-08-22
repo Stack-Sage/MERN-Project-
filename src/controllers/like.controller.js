@@ -3,7 +3,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 
 const toggleVideoLike = asyncHandler(async(req,res)=>{
    const {videoId} = req.params
-   // toggling the like on video 
+   
 })
 
 const toggleCommentLike = asyncHandler(async(req,res)=>{

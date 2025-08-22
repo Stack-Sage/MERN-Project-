@@ -15,11 +15,11 @@ videoRouter
    upload.fields([
       {
          name:"videoFile",
-         maxcount:1,
+         maxCount:1,
       },
       {
          name:"thumbnail",
-         maxcount:1,
+         maxCount:1,
       }
    ]),
     publishVideo
@@ -29,7 +29,7 @@ videoRouter
 .route("/:videoId")
 .get(getVideoById)
 .delete(deleteVideo)
-.patch(upload.single("thumbnail"),updateVideo)
+.patch(upload.single("updatedThumbnail"),updateVideo)
 
 
 videoRouter.route("/toggle/publish/:videoId").patch(togglePublishStatus)
