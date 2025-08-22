@@ -712,3 +712,21 @@ so adding a new viewedBy field in video model to keep track of users who have vi
         - tested them all after minor bugs like typos and all they all worked
 
 # pushing changes to github
+        - git add .
+        - git commit -m "tweet.controller.js"
+        - git push origin main  
+
+
+--- writing playlist.controller.js
+        - created createPlaylist function to create a new playlist
+        - created getAllPlaylists function to get all playlists
+        - created getPlaylistById function to get a single playlist by id
+        - created updatePlaylist function to update a playlist
+        - created deletePlaylist function to delete a playlist
+        
+        - testing all the routes for playlist and ofcourse so many bugs but after half an hour of debugging finally worked 
+
+# pushing changes to github
+        - git add .
+        - git commit -m "playlist.controller.js"
+        - git push origin main

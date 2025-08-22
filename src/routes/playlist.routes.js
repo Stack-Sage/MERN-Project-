@@ -6,7 +6,7 @@ const playlistRouter = Router()
 
 playlistRouter.use(verifyJWT)
 
-playlistRouter.route("/create-playlist").post(createPlaylist)
+playlistRouter.route("/").post(createPlaylist)
 
 
 playlistRouter.route("/:playlistId").get(getPlaylistById).patch(updatePlaylist).delete(deletePlayList);
