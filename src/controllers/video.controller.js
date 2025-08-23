@@ -98,6 +98,13 @@ const getVideoById = asyncHandler(async (req, res) => {
     video.views  += 1
     video.viewedBy.push(req.user._id)
     await video.save()
+
+  
+    await User.findByIdAndUpdate(
+      req.user._id,
+      { $addToSet: { watchHistory: videoId } },
+      { new: true }
+    );
   }
 
   return res

@@ -5,7 +5,7 @@ import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
-import {ObjectId} from "mongodb";
+import mongoose from "mongoose";
 
 const generateAccessRefreshToken = async (userId) => {
   try {
@@ -391,10 +391,12 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
 });
 
 const getWatchHistory = asyncHandler(async(req,res)=>{
+
+
   const user = await User.aggregate([
     {
       $match:{
-        _id: new ObjectId(req.user._id)
+        _id: new mongoose.Types.ObjectId(req.user._id)
       }
     },
     {
@@ -416,7 +418,6 @@ const getWatchHistory = asyncHandler(async(req,res)=>{
                     fullname:1,
                     username:1,
                     avatar:1,
-
                   }
                 },
                 {
@@ -434,13 +435,14 @@ const getWatchHistory = asyncHandler(async(req,res)=>{
     }
   ])
   return res
-  .status(200)
-  .json(
-    new ApiResponse(200,user[0].watchHistory,
-      "Watch history fetched successfully"
+    .status(200)
+    .json(
+      new ApiResponse(200,user[0].watchHistory,
+        "Watch history fetched successfully"
+      )
     )
-  )
 })
+
 
 
 
