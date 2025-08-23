@@ -752,3 +752,20 @@ so adding a new viewedBy field in video model to keep track of users who have vi
         - git add .
         - git commit -m "writing like.controller.js and hotTake.controller.js"
         - git push origin main
+
+
+--- writing subscription controller ---
+    - created three functions to handle subscriptions
+    - created subscribeToChannel function to subscribe a user to a channel
+    - created unsubscribeFromChannel function to unsubscribe a user from a channel
+    - created getSubscribers function to get all subscribers of a channel
+
+    it's was a bit confusing to understand the subscription flow but after two hours of pain finally got it working 
+
+    testing all the subscription routes was successful after fixing some minor bugs
+
+
+# pushing changes to github
+    - git add .
+    - git commit -m "writing subscription.controller.js"
+    - git push origin main

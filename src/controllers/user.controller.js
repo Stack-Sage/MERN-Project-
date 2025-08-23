@@ -53,7 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const avatarLocalPath = req.files?.avatar?.[0]?.path;
   const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
-  console.log(avatarLocalPath);
+  // console.log(avatarLocalPath);
   if (!avatarLocalPath) {
     throw new ApiError(400, "AvatarLocal file is Required!");
   }
@@ -84,14 +84,14 @@ const registerUser = asyncHandler(async (req, res) => {
       "User Wasn't Registered Successfully! Don't worry it's our fault "
     );
   }
-  console.log(createdUser);
+  // console.log(createdUser);
   return res
     .status(201)
     .json(new ApiResponse(200, createdUser, "User Registered Successfully!"));
 });
 
 const loginUser = asyncHandler(async (req, res) => {
-  console.log("req.body is : ", req.body);
+  // console.log("req.body is : ", req.body);
   const { username, email, password } = req.body;
 
   if (!(username || email)) {
