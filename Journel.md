@@ -793,7 +793,7 @@ so adding a new viewedBy field in video model to keep track of users who have vi
 
 "SIGNING OFF"
 
-Oh Wait - i didn't hosted it yet
-Lemme do that and then we can move on to the front end part ...
+Oh Wait - i didn't hosted it yet   {https://streamversebackend.onrender.com/}
+Lemme do that and then we can move on to the front end part ... 
 
 "SIGNING OFF AGAIN"
