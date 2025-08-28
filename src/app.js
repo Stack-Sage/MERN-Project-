@@ -4,16 +4,17 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 
-app.use((cors({
+app.use(cors({
    origin:process.env.CORS_ORIGIN, 
    credentials :true,
-})))
+}))
 
 app.use(express.json({limit:"20kb"})) 
 app.use(express.urlencoded({limit:'20kb'}))
 app.use(express.static("public"))
 
 app.use(cookieParser())   
+
 
 
 import { userRouter } from './routes/user.routes.js'
@@ -43,5 +44,15 @@ app.use("/api/v1/likes",likeRouter)
 app.use("/api/v1/playlist",playlistRouter)
 
 app.use("/api/v1/dashboard",dashboardRouter)
+
+
+app.use((err, req, res, next) => {
+  res.status(err.statusCode || 500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+    errors: err.errors || [],
+    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+  });
+});
 
 export default app 

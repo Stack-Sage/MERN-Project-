@@ -44,11 +44,11 @@ const userSchema = new Schema(
     ],
 
     avatar: {
-      type: String, //cloudinary url
+      type: String,
       required: true,
     },
     coverImage: {
-      type: String, // cloudinary url
+      type: String, 
     },
     refreshToken: {
       type: String,
