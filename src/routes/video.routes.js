@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { deleteVideo, getAllVideos, getVideoById, publishVideo, togglePublishStatus, updateVideo } from "../controllers/video.controller.js";
+import { deleteVideo, getAllVideosOfUser, getVideoById, publishVideo, showAllVideos, togglePublishStatus, updateVideo } from "../controllers/video.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 
 
@@ -10,7 +10,7 @@ videoRouter.use(verifyJWT)
 
 videoRouter
 .route("/")
-.get(getAllVideos)
+.get(getAllVideosOfUser)
 .post(
    upload.fields([
       {
@@ -24,6 +24,7 @@ videoRouter
    ]),
     publishVideo
 )
+videoRouter.route("/all").get(showAllVideos)
 
 videoRouter
 .route("/:videoId")

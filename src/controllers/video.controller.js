@@ -9,7 +9,7 @@ import { User } from "../models/user.model.js";
 
 
 
-const getAllVideos = asyncHandler(async (req, res) => {
+const getAllVideosOfUser = asyncHandler(async (req, res) => {
   const { page = 1, limit = 10, query, sortBy = "createdAt", sortType = "desc", userId } = req.query;
   
   let filter = {owner:userId};
@@ -27,6 +27,37 @@ const getAllVideos = asyncHandler(async (req, res) => {
   // console.log("filter is ",filter)
 
   const allVideos = await Video.find(filter)
+  .skip((pageNum-1) * limitNum)
+  .limit(limitNum)
+  .sort({[sortBy]: sortType === "desc"? -1:1})
+
+  if(!allVideos || allVideos.length === 0){
+    throw new ApiError(404, "No Videos Found");
+  }
+
+  return res
+  .status(200)
+  .json(
+    new ApiResponse(200, allVideos, "Videos fetched successfully!")
+  )
+  
+});
+
+const showAllVideos = asyncHandler(async (req, res) => {
+  const { page = 1, limit = 10, query, sortBy = "createdAt", sortType = "desc"} = req.query;
+
+  let filter = {}
+  const pageNum = Number(page)
+  const limitNum = Number(limit)
+  
+  if(query){
+    filter.$or = [
+      {title : {$regex:query,  $options:"i"}},
+      {description: {$regex:query, $options:"i"}}
+    ]
+  }
+
+  const allVideos = await Video.find(filter).populate("owner")
   .skip((pageNum-1) * limitNum)
   .limit(limitNum)
   .sort({[sortBy]: sortType === "desc"? -1:1})
@@ -196,10 +227,11 @@ const togglePublishStatus = asyncHandler(async (req, res) => {
 });
 
 export {
-  getAllVideos,
+  showAllVideos,
   getVideoById,
   updateVideo,
   publishVideo,
   deleteVideo,
   togglePublishStatus,
+  getAllVideosOfUser,
 };

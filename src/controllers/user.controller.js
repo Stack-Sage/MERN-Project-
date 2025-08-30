@@ -256,7 +256,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
   }
   const updateFields = {};
   if(fullName){
-    updateFields.fullname = fullName
+    updateFields.fullName = fullName
   }
   if(email){
     updateFields.email = email;
@@ -265,9 +265,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
   const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
-      $set: {
-        updateFields
-      },
+      $set: updateFields,
     },
     { new: true }
   ).select("-password");
