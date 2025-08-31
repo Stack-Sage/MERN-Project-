@@ -121,9 +121,12 @@ const loginUser = asyncHandler(async (req, res) => {
   );
 
   const options = {
-    httpOnly: true,
-    secure: true,
-  };
+      httpOnly: true,
+      secure: "false",  // for local development i'm using false 
+      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: "lax"
+    };
+
 
   return res
     .status(200)
@@ -155,10 +158,13 @@ const logoutUser = asyncHandler(async (req, res) => {
     }
   );
 
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
+ const options = {
+      httpOnly: true,
+      secure: "false",  // for local development i'm using false 
+      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: "lax"
+    };
+
 
   return res
     .status(200)
@@ -197,7 +203,9 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
     const options = {
       httpOnly: true,
-      secure: true,
+      secure: "false",  // for local development i'm using false 
+      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: "lax"
     };
 
     return res
@@ -245,7 +253,9 @@ const getCurrentUser = asyncHandler(async (req, res) =>
   {
   return res
     .status(200)
-    .json(200, req.user, "current user Fetched successfully");
+    .json(
+      new ApiResponse( 200,{user:req.user}, "current user Fetched successfully")
+     );
 });
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
