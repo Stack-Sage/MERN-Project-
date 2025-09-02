@@ -9,7 +9,7 @@ const getVideoComments = asyncHandler(async (req, res) => {
   const pageNum = Number(page);
   const limitNum = Number(limit);
 
-  const allComments = await Comment.find({ video: videoId })
+  const allComments = await Comment.find({ video: videoId }).populate("owner")
     .skip((pageNum - 1) * limitNum)
     .limit(limitNum);
 
