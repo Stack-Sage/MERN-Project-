@@ -2,6 +2,8 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { Like } from "../models/like.model.js";
+import { Video } from "../models/video.model.js";
+import { Comment } from "../models/comment.model.js";
 
 const toggleVideoLike = asyncHandler(async (req, res) => {
   const { videoId } = req.params;
@@ -9,26 +11,41 @@ const toggleVideoLike = asyncHandler(async (req, res) => {
     video: videoId,
     likedBy: req.user._id,
   });
+
+  let updatedVideo;
+
   if (!toggleLike) {
-    const likeVideo = await Like.create({
+    await Like.create({
       video: videoId,
       likedBy: req.user._id,
     });
-    if (!likeVideo) {
+    updatedVideo = await Video.findByIdAndUpdate(
+      videoId,
+      { $inc: { likesCount: 1 } },
+      { new: true }
+    );
+    if (!updatedVideo) {
       throw new ApiError(500, "can't like the video");
     }
     return res
       .status(200)
-      .json(new ApiResponse(200, likeVideo, "Video Liked Successfully!!"));
+      .json(new ApiResponse(200, updatedVideo, "Video Liked Successfully!!"));
   }
+
   await Like.findOneAndDelete({
     video: videoId,
     likedBy: req.user._id,
   });
 
+  updatedVideo = await Video.findByIdAndUpdate(
+    videoId,
+    { $inc: { likesCount: -1 } },
+    { new: true }
+  );
+
   return res
     .status(200)
-    .json(new ApiResponse(200, {}, "Like Removed Successfully!"));
+    .json(new ApiResponse(200,  updatedVideo, "Like Removed Successfully!"));
 });
 
 const toggleCommentLike = asyncHandler(async (req, res) => {
@@ -37,26 +54,41 @@ const toggleCommentLike = asyncHandler(async (req, res) => {
     comment: commentId,
     likedBy: req.user._id,
   });
+
+  let updatedComment;
+
   if (!findLike) {
-    const like = await Like.create({
+    await Like.create({
       comment: commentId,
       likedBy: req.user._id,
     });
-    if (!like) {
+    updatedComment = await Comment.findByIdAndUpdate(
+      commentId,
+      { $inc: { likesCount: 1 } },
+      { new: true }
+    );
+    if (!updatedComment) {
       throw new ApiError(500, "can't like the comment");
     }
     return res
       .status(200)
-      .json(new ApiResponse(200, like, "comment Liked Successfully!!"));
+      .json(new ApiResponse(200, updatedComment, "Comment Liked Successfully!!"));
   }
+
   await Like.findOneAndDelete({
     comment: commentId,
     likedBy: req.user._id,
   });
 
+  updatedComment = await Comment.findByIdAndUpdate(
+    commentId,
+    { $inc: { likesCount: -1 } },
+    { new: true }
+  );
+
   return res
     .status(200)
-    .json(new ApiResponse(200, {}, "Like Removed Successfully!"));
+    .json(new ApiResponse(200, updatedComment, "Like Removed Successfully!"));
 });
 
 const getLikedVideos = asyncHandler(async (req, res) => {

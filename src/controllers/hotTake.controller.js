@@ -11,7 +11,8 @@ const createTakes = asyncHandler(async (req, res) => {
   const hotTake = await HotTake.create({
     content,
     owner: req.user._id,
-  });
+  })
+
   if (!hotTake) {
     throw new ApiError(500, "HotTake wasn't created!");
   }
@@ -21,9 +22,19 @@ const createTakes = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, hotTake, "HotTake was created Successfully "));
 });
 
+const getAllTakes = asyncHandler(async (req, res) => {
+  const allHotTakes = await HotTake.find().populate("owner");
+  if (!allHotTakes) {
+    throw new ApiError(500, "No HotTakes found!");
+  }
+  return res
+    .status(200)
+    .json(new ApiResponse(200, allHotTakes, "All HotTakes fetched successfully"));
+});
+
 const getUserTakes = asyncHandler(async (req, res) => {
   const { userId } = req.params;
-  const userHotTakes = await HotTake.find({ owner: userId });
+  const userHotTakes = await HotTake.find({ owner: userId }).populate("owner");
   if (!userHotTakes) {
     throw new ApiError(500, "No HotTake found for this user! ");
   }
@@ -48,7 +59,7 @@ const updateTakes = asyncHandler(async (req, res) => {
       },
     },
     { new: true }
-  );
+  ).populate("owner");
   if (!userHotTake) {
     throw new ApiError(500, "No HotTake was found ");
   }
@@ -56,6 +67,7 @@ const updateTakes = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, userHotTake, "HotTake Updated Successfully "));
 });
+
 const deleteTakes = asyncHandler(async (req, res) => {
   const { takeId } = req.params;
   await HotTake.findByIdAndDelete(takeId);
@@ -148,4 +160,5 @@ export {
   rateCapTake,
   rateFactsTake,
   rateMidTake,
+  getAllTakes
 };
