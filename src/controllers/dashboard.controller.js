@@ -71,7 +71,7 @@ const getChannelStats = asyncHandler(async (req, res) => {
 });
 
 const getChannelVideos = asyncHandler(async (req, res) => {
-  const userVideos = await Video.find({ owner: req.user._id });
+  const userVideos = await Video.find({ owner: req.user._id }).populate("owner");
   if (userVideos.length === 0) {
     return res
       .status(200)
@@ -91,7 +91,7 @@ const getChannelVideos = asyncHandler(async (req, res) => {
 
 const getChannelTakes = asyncHandler(async (req, res) => {
   const userId = req.user._id;
-  const hotTakes = await HotTake.find({ owner: userId });
+  const hotTakes = await HotTake.find({ owner: userId }).populate("owner");
   return res
     .status(200)
     .json(
