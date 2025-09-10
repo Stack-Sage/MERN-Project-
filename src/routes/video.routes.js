@@ -7,7 +7,7 @@ import { upload } from "../middlewares/multer.middleware.js";
 const videoRouter  = Router()
 
 videoRouter.route("/all").get(showAllVideos)
-videoRouter.use(verifyJWT)
+// videoRouter.use(verifyJWT)
 
 videoRouter
 .route("/")
