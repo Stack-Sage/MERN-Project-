@@ -127,6 +127,13 @@ res.cookie("accessToken", accessToken, {
   maxAge: 24 * 60 * 60 * 1000, // optional: 1 day
 });
 
+const options = {
+  httpOnly: true,
+  secure: true,   // must be true in prod (HTTPS)
+  sameSite: "none", // required for cross-domain cookies
+  maxAge: 24 * 60 * 60 * 1000,
+};
+
   return res
     .status(200)
     .cookie("accessToken", accessToken, options)
@@ -157,12 +164,12 @@ const logoutUser = asyncHandler(async (req, res) => {
     }
   );
 
- const options = {
-      httpOnly: true,
-      secure: "false",  // for local development i'm using false 
-      maxAge: 24 * 60 * 60 * 1000,
-      sameSite: "lax"
-    };
+const options = {
+  httpOnly: true,
+  secure: true,   // must be true in prod (HTTPS)
+  sameSite: "none", // required for cross-domain cookies
+  maxAge: 24 * 60 * 60 * 1000,
+};
 
 
   return res
@@ -201,11 +208,12 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
       await generateAccessRefreshToken(user._id);
 
     const options = {
-      httpOnly: true,
-      secure: "false",  // for local development i'm using false 
-      maxAge: 24 * 60 * 60 * 1000,
-      sameSite: "lax"
-    };
+  httpOnly: true,
+  secure: true,   // must be true in prod (HTTPS)
+  sameSite: "none", // required for cross-domain cookies
+  maxAge: 24 * 60 * 60 * 1000,
+};
+
 
     return res
       .status(200)
