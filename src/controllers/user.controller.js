@@ -120,7 +120,7 @@ const loginUser = asyncHandler(async (req, res) => {
     "-password -refreshToken"
   );
 
-res.cookie("accessToken", token, {
+res.cookie("accessToken", accessToken, {
   httpOnly: true,        // cookie not accessible by JS
   secure: true,          // required because Vercel/Render use HTTPS
   sameSite: "none",      // required for cross-site (different domains)
