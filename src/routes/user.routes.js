@@ -11,6 +11,7 @@ import {
   updateUserCoverImage,
   getUserChannelProfile,
   getWatchHistory,
+  okay,
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
@@ -30,6 +31,9 @@ userRouter.route("/register").post(
   ]),
   registerUser
 );
+
+
+userRouter.route("/okay").get(okay);
 
 userRouter.route("/login").post(loginUser);
 
